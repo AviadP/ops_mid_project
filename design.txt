@@ -1,0 +1,10 @@
+For the mid project we would like you to complete the following
+    Create VPC
+    Build the monitoring environment (ELK/prometheus/grafana)
+    Build a docker image of my_dummy_exported  used in the metrics session.
+    Start two One EC2 instances for the application
+    On each EC2 instance start a docker with the application
+    The application needs to register to consul 
+    Prometheus collector will find the application in consul and monitor it.
+	
+	
