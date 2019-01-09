@@ -28,4 +28,9 @@ For the mid project we would like you to complete the following
     
     
 	
+how:
+build env wit terraform
+config env with ansible
+create run script that include all steps
+
 	
