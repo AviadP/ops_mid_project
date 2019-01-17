@@ -6,4 +6,4 @@ docker run --name consul -d --net=host -v /consul/data:/consul/data \
 "enable_debug":true
 }' consul:1.2.1 agent -server -bind 127.0.0.1 -bootstrap-expect=1 
 
-echo "Setup complete.
+echo "Setup complete."
