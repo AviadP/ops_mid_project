@@ -1,7 +1,8 @@
 #!/bin/bash
 
 sudo apt-get update
-sudo apt-get install default-jre -y
+apt-get install openjdk-8-jre-headless -y
+apt-get install openjdk-8-jdk-headless -y
 
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.5.4.deb
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.5.4.deb.sha512
