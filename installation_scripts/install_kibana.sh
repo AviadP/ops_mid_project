@@ -5,7 +5,7 @@ shasum -a 512 kibana-6.5.4-amd64.deb
 sudo dpkg -i kibana-6.5.4-amd64.deb
 
 #IP_ADDR="$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')"
-IP_ADDR="hostname -I"
+IP_ADDR=$(hostname -I)
 sed -i 's|#server.host: "localhost"|server.host: '"$IP_ADDR"'|g' /etc/kibana/kibana.yml
 
 sudo systemctl stop kibana.service
