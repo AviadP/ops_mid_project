@@ -12,6 +12,14 @@ resource "aws_security_group" "general_sg" {
         cidr_blocks     = ["0.0.0.0/0"]
     }
 
+### SSH port #######
+  ingress {
+        from_port       = 22
+        to_port         = 22
+        protocol        = "tcp"
+        cidr_blocks     = ["0.0.0.0/0"]
+    }
+
 ### Kibana port ###
   ingress {
         from_port       = 5601

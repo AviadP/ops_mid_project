@@ -21,7 +21,7 @@ resource "aws_key_pair" "generated_key" {
   key_name   = "${var.key_name}"
   public_key = "${tls_private_key.midproj_private.public_key_openssh}"
 
-  depends_on = ["tls_private_key.app_private"]
+  depends_on = ["tls_private_key.midproj_private"]
 }
 
 ##################################################################################

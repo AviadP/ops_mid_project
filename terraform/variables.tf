@@ -20,17 +20,6 @@ variable "vpc_cidr_block" {
   default     = "10.0.0.0/16"
 }
 
-# Subnets Count
-variable "private_subnet_count" {
-  description = "Private Subnet Count"
-  default     = 1
-}
-
-variable "public_subnet_count" {
-  description = "Public Subnet Count"
-  default     = 1
-}
-
 variable "ami_id" {
   description = "default AMI ID of ubuntu18 image"
   default = "ami-0ac019f4fcb7cb7e6"
