@@ -95,6 +95,18 @@ systemctl start grafana-server
 systemctl enable grafana-server.service
 
 # add datasource to Grafana
+cat << EOF >/etc/grafana/provisioning/datasources/datasource.yaml
+apiVersion: 1
+datasources:
+ - name: Prometheus
+   type: prometheus
+   orgId: 1
+   url: http://localhost:9090
+   access: proxy
+   version: 1
+   editable: false
+isDefault: true
+EOF
 
 # add Dashboard to Grafana
 
