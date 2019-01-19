@@ -16,6 +16,6 @@ then:
 ```
 
 output will include:
-  consul node ip address
-  elk stack node ip address
-  monitoring node ip address
+  consul node ip address(using port 8500)
+  elk stack node ip address(using port 5601)
+  monitoring node ip address (using port 3000)
