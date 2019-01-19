@@ -1,7 +1,3 @@
-output "private_key" {
-    value = "${tls_private_key.midproj_private.private_key_pem}"
-}
-
 output "Grafana" {
     value = "${aws_instance.monitoring.public_ip}"
 }
