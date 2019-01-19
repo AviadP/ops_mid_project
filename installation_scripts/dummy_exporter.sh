@@ -7,7 +7,6 @@ sh get-docker.sh
 sudo docker container run --name dummyexporter -d -p 65433:65433 aviadpo/my_dummy_exporter
 
 #install consul
-set -e
 
 echo "Grabbing IPs..."
 PRIVATE_IP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
