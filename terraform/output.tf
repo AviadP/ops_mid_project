@@ -1,3 +1,6 @@
+output "private_key" {
+    value = "${tls_private_key.midproj_private.private_key_pem}"
+}
 output "dummy_app" {
     value = "${aws_instance.dummy_app.*.public_ip}"
 }
@@ -9,7 +12,8 @@ output "Grafana" {
 output "Kibana" {
     value = "${aws_instance.elk_stack.public_ip}"
 }
-
-output "private_key" {
-    value = "${tls_private_key.midproj_private.private_key_pem}"
+output "consul" {
+    value = "${aws_instance.consul_srv.public_ip}"
 }
+
+
