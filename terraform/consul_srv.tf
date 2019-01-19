@@ -6,6 +6,7 @@ resource "aws_instance" "consul_srv" {
     subnet_id = "${aws_subnet.public_c.id}"
     vpc_security_group_ids = ["${aws_security_group.general_sg.id}"]
     associate_public_ip_address = true
+    iam_instance_profile = "${aws_iam_instance_profile.consul-join.name}"
     user_data = "${file("../installation_scripts/install_consul.sh")}"
 
 
