@@ -10,7 +10,7 @@ sudo apt-get -yqq install unzip &>/dev/null
 
 echo "Fetching Consul..."
 cd /tmp
-curl -sLo consul.zip https://releases.hashicorp.com/consul/${consul_version}/consul_${consul_version}_linux_amd64.zip
+wget -O consul.zip https://releases.hashicorp.com/consul/1.4.0/consul_1.4.0_linux_amd64.zip
 
 echo "Installing Consul..."
 unzip consul.zip >/dev/null
@@ -56,8 +56,7 @@ Group=consul
 PIDFile=/run/consul/consul.pid
 Restart=on-failure
 Environment=GOMAXPROCS=2
-ExecStartPre=[ -f "/run/consul/consul.pid" ] && /usr/bin/rm -f /run/consul/consul.pid
-ExecStart=/usr/local/bin/consul agent -pid-file=/run/consul/consul.pid -config-dir=/etc/consul.d
+ExecStart=/usr/local/bin/consul agent -config-dir /etc/consul.d
 ExecReload=/bin/kill -s HUP $MAINPID
 KillSignal=SIGINT
 TimeoutStopSec=5
