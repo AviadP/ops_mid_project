@@ -105,7 +105,7 @@ datasources:
    access: proxy
    version: 1
    editable: false
-isDefault: true
+   isDefault: true
 EOF
 
 # add Dashboard to Grafana
@@ -117,10 +117,11 @@ providers:
    folder: ''
    type: file
    options:
-path: /var/lib/grafana/dashboards
+   path: /var/lib/grafana/dashboards
 EOF
 
 # create dashboard
+mkdir -p /var/lib/grafana/dashboards/
 cat << EOF >/var/lib/grafana/dashboards/grafana_dashboad.json
 {
   "annotations": {
