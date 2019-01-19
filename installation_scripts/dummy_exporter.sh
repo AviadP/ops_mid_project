@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
+#install docker
+curl -fsSL get.docker.com -o get-docker.sh
+sh get-docker.sh
+
+#run dummy app
+sudo docker container run --name dummyexporter -d -p 65433:65433 aviadpo/my_dummy_exporter
+
+#install consul
 set -e
 
 echo "Grabbing IPs..."
@@ -25,17 +33,15 @@ sudo tee /etc/consul.d/config.json > /dev/null <<EOF
 {
   "advertise_addr": "$PRIVATE_IP",
   "data_dir": "/opt/consul",
-  "datacenter": "midporj",
+  "datacenter": "midproj",
   "encrypt": "uDBV4e+LbFW3019YKPxIrg==",
   "disable_remote_exec": true,
   "disable_update_check": true,
   "leave_on_terminate": true,
   "retry_join": ["provider=aws tag_key=consul_server tag_value=true"],
-  "node_name": "consul_srv",
-  "server": true,
-  "bootstrap_expect": 1,
-  "ui": true,
-  "client_addr": "0.0.0.0"
+  "node_name": "exporter-${count.index+1}",
+   "enable_script_checks": true,
+   "server": false
 }
 EOF
 
@@ -68,3 +74,19 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable consul.service
 sudo systemctl start consul.service
+
+#register to consul
+cat << EOCSU >/etc/consul.d/exporter.json
+{"service": {
+    "name": "exporter",
+    "tags": ["exporter"],
+    "port": 65433,
+    "check": {
+        "http": "http://localhost:65433",
+        "interval": "10s"
+        }
+    }
+}
+EOCSU
+
+
