@@ -117,7 +117,7 @@ providers:
    folder: ''
    type: file
    options:
-   path: /var/lib/grafana/dashboards
+     path: "/var/lib/grafana/dashboards"
 EOF
 
 # create dashboard
